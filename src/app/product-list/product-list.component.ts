@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+//import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { products } from '../products';
 
 @Component({
@@ -8,7 +9,10 @@ import { products } from '../products';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  products = products;
+  constructor(private http: HttpClient) { }
+  currencyList: any;
+  currencyItems: any;
+  currencyItemsUrl = 'http://165.22.28.135:5000/get_coins';
 
   share() {
     window.alert('The product has been shared!');
@@ -16,6 +20,18 @@ export class ProductListComponent {
 
   onNotify() {
     window.alert('You will be notified when the product goes on sale');
+  }
+
+  ngOnInit() {
+    this.currencyList = products;
+    this.loadCurrencies();
+  }
+
+  loadCurrencies() {
+    // this.currencyItems = this.http.get(this.currencyItemsUrl).subscribe((data: Currencies));
+    this.currencyItems = this.http.get(this.currencyItemsUrl);
+
+    console.log(this.currencyItems);
   }
 }
 
