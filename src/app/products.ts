@@ -1,17 +1,17 @@
 export const products = [
   {
     name: 'ETH',
-    course: 799,
+    price: 799,
     description: 'Ethereum'
   },
   {
     name: 'EOS',
-    course: 699,
+    price: 699,
     description: 'EOS Cryptocurrency'
   },
   {
     name: 'BTC',
-    course: 299,
+    price: 299,
     description: 'Bitcoin'
   }
 ];
